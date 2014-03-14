@@ -1,14 +1,32 @@
+<div class="panel panel-default">
+ <div class="panel-heading"><strong>Showing album: <%= (@album.title).split.map(&:capitalize).join(' ') %> by 
+      <%= (@artist.name).split.map(&:capitalize).join(' ') %></strong></div>
+    <div class="panel-body">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @album.name %>
+  <strong>Title:</strong>
+  <%= (@album.title).split.map(&:capitalize).join(' ') %>
 </p>
 
 <p>
   <strong>Genre:</strong>
   <%= @album.genre %>
 </p>
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+<p>
+  <%#= render 'albums/index' %>
+</p>
+<p>
+<div class="authform">
+<div class="panel-heading"><strong>Add Track</strong></div>
+  <%#= render 'albums/form' %>
+ </div> 
+</p>
+  </div>
+ </div>
+</div>
+<% if user_signed_in? %>
+<span class="badge pull-right">
+<%= link_to 'Remove Album', artist_album_path(@album.artist_id,@album.id), method: :delete, data: { confirm: 'Are you sure?' }%>
+</span>
+<% end %>

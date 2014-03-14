@@ -1,29 +1,18 @@
-<h1>Listing artists</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Gender</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @artists.each do |artist| %>
-      <tr>
-        <td><%= artist.name %></td>
-        <td><%= artist.gender %></td>
-        <td><%= link_to 'Show', artist %></td>
-        <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-        <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="panel panel-default">
+ <div class="panel-heading"><strong>Artists</strong></div>
+<div class="panel-body">
+<% @artists.each do |artist| %>
+<ul class="list-group">
+  <li class="list-group-item">
+    <% if user_signed_in? %>
+    <span class="badge"><%= link_to 'Remove Artist', artist, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    <span class="badge"><%= link_to 'Update Artist', edit_artist_path(artist) %></span>
     <% end %>
-  </tbody>
-</table>
-
+    <%= link_to (artist.name).split.map(&:capitalize).join(' '), artist %>
+  </li>
+</ul>
+<% end %>
 <br>
-
-<%= link_to 'New Artist', new_artist_path %>
+<% if user_signed_in? %>
+<span class="badge pull-right"><%= link_to 'Add Artist', new_artist_path %></span>
+<% end %>

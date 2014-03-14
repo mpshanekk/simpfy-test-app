@@ -4,7 +4,8 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.all
+    @artist = Artist.find(params[:artist_id])
+    #@albums = @artist.albums
   end
 
   # GET /albums/1
@@ -14,7 +15,9 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    @album = Album.new
+    #@album = Album.new
+    @artist = Artist.find(params[:artist_id])
+    @albums = @artist.albums.new
   end
 
   # GET /albums/1/edit
@@ -24,15 +27,15 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
-
+    @artist = Artist.find(params[:artist_id])
+    @album =  @artist.albums.create(album_params)
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.html { redirect_to artist_path(@artist), notice: 'Album was successfully created.' }
         format.json { render action: 'show', status: :created, location: @album }
       else
         format.html { render action: 'new' }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
+        format.json { render json: @artist.albums.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,13 +43,14 @@ class AlbumsController < ApplicationController
   # PATCH/PUT /albums/1
   # PATCH/PUT /albums/1.json
   def update
+    @artist = Artist.find(params[:artist_id])
     respond_to do |format|
-      if @album.update(album_params)
-        format.html { redirect_to @album, notice: 'Album was successfully updated.' }
+      if @artist.albums.update_attributes(album_params)
+        format.html { redirect_to artist_path(@artist), notice: 'Album was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @album.errors, status: :unprocessable_entity }
+        format.json { render json: @artist.albums.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,21 +58,21 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.json
   def destroy
+    @artist = Artist.find(params[:artist_id])
+    @album =  @artist.albums.find(params[:id])
     @album.destroy
-    respond_to do |format|
-      format.html { redirect_to albums_url }
-      format.json { head :no_content }
-    end
+    redirect_to artist_path(@artist)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_album
-      @album = Album.find(params[:id])
+     @artist = Artist.find(params[:artist_id])
+     @album =  @artist.albums.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:name, :genre)
+      params.require(:album).permit(:title, :genre)
     end
 end

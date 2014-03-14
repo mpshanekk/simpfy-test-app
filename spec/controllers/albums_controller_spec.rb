@@ -23,7 +23,7 @@ describe AlbumsController do
   # This should return the minimal set of attributes required to create a valid
   # Album. As you add validations to Album, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { { "title" => "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe AlbumsController do
       it "assigns a newly created but unsaved album as @album" do
         # Trigger the behavior that occurs when invalid params are submitted
         Album.any_instance.stub(:save).and_return(false)
-        post :create, {:album => { "name" => "invalid value" }}, valid_session
+        post :create, {:album => { "title" => "invalid value" }}, valid_session
         assigns(:album).should be_a_new(Album)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Album.any_instance.stub(:save).and_return(false)
-        post :create, {:album => { "name" => "invalid value" }}, valid_session
+        post :create, {:album => { "title" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe AlbumsController do
         # specifies that the Album created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Album.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => album.to_param, :album => { "name" => "MyString" }}, valid_session
+        Album.any_instance.should_receive(:update).with({ "title" => "MyString" })
+        put :update, {:id => album.to_param, :album => { "title" => "MyString" }}, valid_session
       end
 
       it "assigns the requested album as @album" do
@@ -128,7 +128,7 @@ describe AlbumsController do
         album = Album.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Album.any_instance.stub(:save).and_return(false)
-        put :update, {:id => album.to_param, :album => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => album.to_param, :album => { "title" => "invalid value" }}, valid_session
         assigns(:album).should eq(album)
       end
 
@@ -136,7 +136,7 @@ describe AlbumsController do
         album = Album.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Album.any_instance.stub(:save).and_return(false)
-        put :update, {:id => album.to_param, :album => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => album.to_param, :album => { "title" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :album do
-    name "MyString"
-    genre "MyString"
+    title "My Title"
+    genre {Album::GENRE.sample}
   end
 end

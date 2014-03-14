@@ -1,6 +1,9 @@
-<h1>Editing artist</h1>
-
-<%= render 'form' %>
-
+<div class="panel panel-default">
+ <div class="panel-heading"><strong>Update artist</strong></div>
+    <div class="panel-body">
+     <%= render 'form' %>
+    </div>
+ </div>
+</div>
 <%= link_to 'Show', @artist %> |
-<%= link_to 'Back', artists_path %>
+<%= link_to 'Cancel', :back %>

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :artist do
-    name "MyString"
-    gender "MyString"
+    name "My Artist"
+    gender {Artist::GENDER.sample}
   end
 end

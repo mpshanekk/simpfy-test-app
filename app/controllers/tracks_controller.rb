@@ -4,7 +4,9 @@ class TracksController < ApplicationController
   # GET /tracks
   # GET /tracks.json
   def index
-    @tracks = Track.all
+    #@tracks = Track.all
+   @album = Album.find(params[:album_id])
+
   end
 
   # GET /tracks/1
@@ -24,8 +26,10 @@ class TracksController < ApplicationController
   # POST /tracks
   # POST /tracks.json
   def create
-    @track = Track.new(track_params)
-
+    #@track = Track.new(track_params)
+    @artist = Artist.find(params[:artist_id])
+    @album =  @artist.albums.find(params[:id])
+    @track =  @album.tracks.create(track_params)
     respond_to do |format|
       if @track.save
         format.html { redirect_to @track, notice: 'Track was successfully created.' }

@@ -1,5 +1,3 @@
-<h1>Listing albums</h1>
-
 <table>
   <thead>
     <tr>
@@ -12,12 +10,12 @@
   </thead>
 
   <tbody>
-    <% @albums.each do |album| %>
+    <% @artist.albums.each do |album| %>
       <tr>
-        <td><%= album.name %></td>
+        <td><%= album.title %></td>
         <td><%= album.genre %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
+        <td><%= link_to 'Show', artist_album_path %></td>
+        <td><%= link_to 'Edit', edit_artist_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Album', new_album_path %>
+<%= link_to 'New Album', new_artist_album_path %>

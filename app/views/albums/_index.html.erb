@@ -1,0 +1,12 @@
+<strong>Albums:</strong>
+<% @artist.albums.each do |album| %>
+<ul class="list-group">
+  <li class="list-group-item">
+    <% if user_signed_in? %>
+    <span class="badge">
+    <%= link_to 'Remove Album', artist_album_path(album.artist_id,album.id), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    <% end %>
+    <%= link_to (album.title).split.map(&:capitalize).join(' '), artist_album_path(album.artist_id,album.id) %>
+  </li>
+</ul>
+<% end %>
