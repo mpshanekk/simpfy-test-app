@@ -16,15 +16,14 @@
   <%= render 'albums/index' %>
 </p>
 <p>
-<div class="authform">
-<div class="panel-heading"><strong>Add Album</strong></div>
-  <%= render 'albums/form' %>
- </div> 
+<% if user_signed_in? %>
+<span class=" pull-right"><%= link_to 'Add Album', new_artist_album_path(@artist), :class => "btn btn-default btn-sm" %></span>
+<% end %>
 </p>
   </div>
  </div>
 </div>
 <% if user_signed_in? %>
-<span class="pull-right"><%= link_to 'Update artist', edit_artist_path(@artist),:class => "badge" %>
-<%= link_to 'Remove Artist', @artist, method: :delete, data: { confirm: 'Are you sure?' },:class => "badge" %></span>
+<span class="pull-right"><%= link_to 'Update artist', edit_artist_path(@artist),:class => "btn btn-default btn-xs"%>
+<%= link_to 'Remove Artist', @artist, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-danger btn-xs" %></span>
 <% end %>

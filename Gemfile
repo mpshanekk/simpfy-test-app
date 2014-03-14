@@ -19,6 +19,7 @@ gem 'pry-rails'
 gem 'pry-remote'
 gem 'pry-byebug'
 gem 'foreman'
+gem 'carrierwave'
 
 group :development do
   gem 'better_errors'

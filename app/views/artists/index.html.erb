@@ -5,8 +5,11 @@
 <ul class="list-group">
   <li class="list-group-item">
     <% if user_signed_in? %>
-    <span class="badge"><%= link_to 'Remove Artist', artist, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-    <span class="badge"><%= link_to 'Update Artist', edit_artist_path(artist) %></span>
+    <span class="pull-right">
+      <%= link_to 'Update Artist', edit_artist_path(artist), :class => "btn btn-default btn-xs" %>
+      <%= link_to 'Remove Artist', artist, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %>
+    </span>
+
     <% end %>
     <%= link_to (artist.name).split.map(&:capitalize).join(' '), artist %>
   </li>
@@ -14,5 +17,5 @@
 <% end %>
 <br>
 <% if user_signed_in? %>
-<span class="badge pull-right"><%= link_to 'Add Artist', new_artist_path %></span>
+<span class=" pull-right"><%= link_to 'Add Artist', new_artist_path, :class => "btn btn-default btn-sm" %></span>
 <% end %>

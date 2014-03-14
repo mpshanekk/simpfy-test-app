@@ -32,7 +32,7 @@ class TracksController < ApplicationController
         format.json { render action: 'show', status: :created, location: @track }
       else
         format.html { render action: 'new' }
-        format.json { render json: @album.tracks.errors, status: :unprocessable_entity }
+        format.json { render json: artist_album_path(@album.artist_id,@album).errors, status: :unprocessable_entity }
       end
     end
   end

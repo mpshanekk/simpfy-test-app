@@ -5,4 +5,9 @@ class Artist < ActiveRecord::Base
   GENDER = %w( Male Female )
   validates :name,   :presence => true
   validates :gender, :inclusion => {:in => GENDER}
+
+  def self.search(query)
+    where("name like ?", "%#{query}%") 
+  end
+
 end
