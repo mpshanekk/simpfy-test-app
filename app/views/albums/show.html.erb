@@ -1,5 +1,5 @@
 <div class="panel panel-default">
- <div class="panel-heading"><strong>Showing album: <%= (@album.title).split.map(&:capitalize).join(' ') %> by 
+ <div class="panel-heading"><strong>Showing album: <%= (@album.title).split.map(&:capitalize).join(' ') %> by: 
       <%= (@artist.name).split.map(&:capitalize).join(' ') %></strong></div>
     <div class="panel-body">
 <p id="notice"><%= notice %></p>
@@ -14,12 +14,12 @@
   <%= @album.genre %>
 </p>
 <p>
-  <%#= render 'albums/index' %>
+  <%= render 'tracks/index' %>
 </p>
 <p>
 <div class="authform">
 <div class="panel-heading"><strong>Add Track</strong></div>
-  <%#= render 'albums/form' %>
+  <%= render 'tracks/form' %>
  </div> 
 </p>
   </div>

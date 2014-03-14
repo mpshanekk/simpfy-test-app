@@ -1,13 +1,12 @@
-<%= simple_form_for(@track) do |f| %>
+<%= simple_form_for([@artist,@album,@album.tracks.build]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :length %>
-    <%= f.input :album_id %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'button right' %>
   </div>
 <% end %>

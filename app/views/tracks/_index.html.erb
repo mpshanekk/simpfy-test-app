@@ -1,0 +1,17 @@
+<strong>Tracks:</strong>
+<% @album.tracks.each do |track| %>
+<ul class="list-group">
+  <li class="list-group-item">
+    <% if user_signed_in? %>
+    <span class="badge">
+    <%= link_to 'Remove Track', artist_album_track_path(@artist,track.album_id,track.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </span>
+    <% end %>
+    <%= link_to (track.name).split.map(&:capitalize).join(' '), artist_album_track_path(@artist,track.album_id,track.id) %>
+  </li>
+</ul>
+<% end %>
+
+<br><br>
+<%= link_to 'Back', :back %>
+

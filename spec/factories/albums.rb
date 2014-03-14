@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :album do
     title "My Title"
-    genre {Album::GENRE.sample}
+    genre "rock"
   end
 end

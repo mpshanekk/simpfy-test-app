@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :track do
-    name "MyString"
-    length "MyString"
+    name "My Track"
+    length 2
     album_id 1
   end
 end
