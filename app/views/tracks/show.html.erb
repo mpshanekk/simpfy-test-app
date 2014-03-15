@@ -10,14 +10,14 @@
 
 <p>
   <strong>Length</strong>
-  <%= @track.length %> mins
+  <%= @track.length %> minutes
 </p>
   </div>
  </div>
 </div>
 <%= link_to 'Back', :back %>
 <% if user_signed_in? %>
-<span class="badge pull-right">
+<span class="btn btn-danger btn-xs pull-right">
 <%= link_to 'Remove Track', artist_album_track_path(@artist,@track.album_id,@track.id), method: :delete, data: { confirm: 'Are you sure?' }%>
 </span>
 <% end %>

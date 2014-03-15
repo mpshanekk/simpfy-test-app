@@ -3,7 +3,7 @@
 <ul class="list-group">
   <li class="list-group-item">
     <% if user_signed_in? %>
-    <span class="badge">
+    <span class="pull-right btn btn-danger btn-xs">
     <%= link_to 'Remove Track', artist_album_track_path(@artist,track.album_id,track.id), method: :delete, data: { confirm: 'Are you sure?' } %>
     </span>
     <% end %>

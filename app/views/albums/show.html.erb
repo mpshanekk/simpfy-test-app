@@ -17,16 +17,15 @@
   <%= render 'tracks/index' %>
 </p>
 <p>
-<div class="authform">
-<div class="panel-heading"><strong>Add Track</strong></div>
-  <%= render 'tracks/form' %>
- </div> 
+<% if user_signed_in? %>
+ <span class=" pull-right"><%= link_to 'Add Track', new_artist_album_track_path(@artist,@album), :class => "btn btn-default btn-sm" %></span>
+<% end %>
 </p>
   </div>
  </div>
 </div>
 <% if user_signed_in? %>
-<span class="badge pull-right">
+<span class="btn btn-danger btn-xs pull-right">
 <%= link_to 'Remove Album', artist_album_path(@album.artist_id,@album.id), method: :delete, data: { confirm: 'Are you sure?' }%>
 </span>
 <% end %>
