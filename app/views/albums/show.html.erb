@@ -18,6 +18,12 @@
   <strong>Genre:</strong>
   <%= @album.genre %>
 </p>
+
+<p>
+  <strong>Realease date:</strong>
+  <%= @album.created_at.strftime("%Y /%m /%d") %>
+</p>
+
 <p>
   <%= render 'tracks/index' %>
 </p>
@@ -30,7 +36,9 @@
  </div>
 </div>
 <% if user_signed_in? %>
-<span class="btn btn-danger btn-xs pull-right">
-<%= link_to 'Remove Album', artist_album_path(@album.artist_id,@album.id), method: :delete, data: { confirm: 'Are you sure?' }%>
+<span class="pull-right">
+<%= link_to 'Update Album', edit_artist_album_path(@album.artist_id,@album.id),:class => "btn btn-default btn-xs" %> 
+<%= link_to 'Remove Album', artist_album_path(@album.artist_id,@album.id), method: :delete, data: { confirm: 'Are you sure?' },
+:class => "btn btn-danger btn-xs"%>
 </span>
 <% end %>

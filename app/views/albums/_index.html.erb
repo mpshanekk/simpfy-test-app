@@ -3,9 +3,10 @@
 <ul class="list-group">
   <li class="list-group-item">
     <% if user_signed_in? %>
-    <span class="pull-right btn btn-danger btn-xs">
-    <%= link_to 'Edit', edit_artist_album_path(album.artist_id,album.id) %> 
-    <%= link_to 'Remove Album', artist_album_path(album.artist_id,album.id), method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    <span class="pull-right">
+    <%= link_to 'Update Album', edit_artist_album_path(album.artist_id,album.id),:class => "btn btn-default btn-xs" %> 
+    <%= link_to 'Remove Album', artist_album_path(album.artist_id,album.id), method: :delete, data: { confirm: 'Are you sure?' },
+       :class => "btn btn-danger btn-xs" %></span>
     <% end %>
     <%= link_to (album.title).split.map(&:capitalize).join(' '), artist_album_path(album.artist_id,album.id) %>
   </li>

@@ -83,50 +83,50 @@ describe AlbumsController do
     end
   end
 
-  # describe "PUT update" do
-  #   describe "with valid params" do
-  #     it "updates the requested album" do
-  #       artist = Artist.create! artist_attributes
-  #       album = Artist.find(artist.id).albums.create! valid_attributes
-  #       Album.any_instance.should_receive(:update).with({ "title" => "MyString" })
-  #       put :update, {:artist_id => artist.id, :id => album.to_param, :album => { "title" => "MyString" }}, valid_session
-  #     end
+  describe "PUT update" do
+    describe "with valid params" do
+      it "updates the requested album" do
+        artist = Artist.create! artist_attributes
+        album = Artist.find(artist.id).albums.create! valid_attributes
+        Album.any_instance.should_receive(:update).with({ "title" => "MyString" })
+        put :update, {:artist_id => artist.id, :id => album.to_param, :album => { "title" => "MyString" }}, valid_session
+      end
 
-  #     it "assigns the requested album as @album" do
-  #       artist = Artist.create! artist_attributes
-  #       album = Artist.find(artist.id).albums.create! valid_attributes
-  #       put :update, {:artist_id => artist.id, :id => album.to_param, :album => valid_attributes}, valid_session
-  #       assigns(:album).should eq(album)
-  #     end
+      it "assigns the requested album as @album" do
+        artist = Artist.create! artist_attributes
+        album = Artist.find(artist.id).albums.create! valid_attributes
+        put :update, {:artist_id => artist.id, :id => album.to_param, :album => valid_attributes}, valid_session
+        assigns(:album).should eq(album)
+      end
 
-  #     it "redirects to the album" do
-  #       artist = Artist.create! artist_attributes
-  #       album = Artist.find(artist.id).albums.create! valid_attributes
-  #       put :update, {:artist_id => artist.id, :id => album.to_param, :album => valid_attributes}, valid_session
-  #       response.should redirect_to(album)
-  #     end
-  #   end
+      it "redirects to the album" do
+        artist = Artist.create! artist_attributes
+        album = Artist.find(artist.id).albums.create! valid_attributes
+        put :update, {:artist_id => artist.id, :id => album.to_param, :album => valid_attributes}, valid_session
+        response.should redirect_to(artist_album_path(artist,album))
+      end
+    end
 
-  #   describe "with invalid params" do
-  #     it "assigns the album as @album" do
-  #       artist = Artist.create! artist_attributes
-  #       album = Artist.find(artist.id).albums.create! valid_attributes
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Album.any_instance.stub(:save).and_return(false)
-  #       put :update, {:artist_id => artist.id,:id => album.to_param, :album => { "title" => "invalid value" }}, valid_session
-  #       assigns(:album).should eq(album)
-  #     end
+    describe "with invalid params" do
+      it "assigns the album as @album" do
+        artist = Artist.create! artist_attributes
+        album = Artist.find(artist.id).albums.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        Album.any_instance.stub(:save).and_return(false)
+        put :update, {:artist_id => artist.id,:id => album.to_param, :album => { "title" => "invalid value" }}, valid_session
+        assigns(:album).should eq(album)
+      end
 
-  #     it "re-renders the 'edit' template" do
-  #       artist = Artist.create! artist_attributes
-  #       album = Artist.find(artist.id).albums.create! valid_attributes
-  #       # Trigger the behavior that occurs when invalid params are submitted
-  #       Album.any_instance.stub(:save).and_return(false)
-  #       put :update, {:artist_id => artist.id, :id => album.to_param, :album => { "title" => "invalid value" }}, valid_session
-  #       response.should render_template("edit")
-  #     end
-  #   end
-  # end
+      it "re-renders the 'edit' template" do
+        artist = Artist.create! artist_attributes
+        album = Artist.find(artist.id).albums.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        Album.any_instance.stub(:save).and_return(false)
+        put :update, {:artist_id => artist.id, :id => album.to_param, :album => { "title" => "invalid value" }}, valid_session
+        response.should render_template("edit")
+      end
+    end
+  end
 
   describe "DELETE destroy" do
     it "destroys the requested album" do

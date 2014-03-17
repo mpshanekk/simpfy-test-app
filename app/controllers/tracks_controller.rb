@@ -4,7 +4,7 @@ class TracksController < ApplicationController
   def index
     @artist = Artist.find(params[:artist_id])
     @album =  @artist.albums.find(params[:album_id])
-    @track =  @album.tracks
+    @tracks =  @album.tracks
   end
 
   def show

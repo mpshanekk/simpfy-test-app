@@ -14,7 +14,7 @@ class AlbumsController < ApplicationController
      if params[:search]
       @albums = Album.search(params[:search]).order("created_at DESC")
      else
-      @albums = Album.all
+      @albums = Album.all.order("updated_at DESC")
      end
   end
 
@@ -23,7 +23,7 @@ class AlbumsController < ApplicationController
 
   def new
     @artist = Artist.find(params[:artist_id])
-    @albums = @artist.albums.new
+    @album = @artist.albums.new
   end
 
   def edit

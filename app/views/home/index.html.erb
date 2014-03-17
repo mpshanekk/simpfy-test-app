@@ -1,1 +1,27 @@
-<h3>Home</h3>
+<table>
+  <tr>
+    <th class="panel-heading"><strong>All Artists</strong></th>
+  </tr>
+  <tr>
+  <% @artists.each do |artist| %>
+    <td><ul class="list-group">
+  <li class="list-group-item">
+    <%= link_to (artist.name).split.map(&:capitalize).join(' '), artist %>
+  </li>
+</ul></td>
+  <% end %>  
+  </tr>
+</table>
+<br>
+<div class="panel panel-default">
+ <div class="panel-heading"><strong>All Albums</strong></div>
+<div class="panel-body">
+<% @albums.each do |album| %>
+<ul class="list-group">
+  <li class="list-group-item">
+    <%= link_to (album.title).split.map(&:capitalize).join(' '), artist_album_path(album.artist_id,album.id) %>
+  </li>
+</ul>
+<% end %>
+<br>
+

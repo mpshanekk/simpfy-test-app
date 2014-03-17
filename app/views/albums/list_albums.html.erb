@@ -4,18 +4,13 @@
 <% @albums.each do |album| %>
 <ul class="list-group">
   <li class="list-group-item">
-    <% if user_signed_in? %>
-    <span class="pull-right">
-      <%#= link_to 'Update Artist', edit_artist_path(artist), :class => "btn btn-default btn-xs" %>
-      <%#= link_to 'Remove Artist', artist, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %>
-    </span>
-
-    <% end %>
     <%= link_to (album.title).split.map(&:capitalize).join(' '), artist_album_path(album.artist_id,album.id) %>
+    <% if !album.cover.present? %>
+      <span class="image_con pull-right"><%= image_tag("/images/default.jpeg",:border => 0) %></span>
+    <% else %>
+      <span class="image_con pull-right"><%= image_tag(album.cover)%></span>
+    <% end %>
   </li>
 </ul>
 <% end %>
 <br>
-<% if user_signed_in? %>
-<span class=" pull-right"><%#= link_to 'Add Artist', new_artist_path, :class => "btn btn-default btn-sm" %></span>
-<% end %>
