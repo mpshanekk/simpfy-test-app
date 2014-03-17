@@ -41,3 +41,5 @@ group :test do
   gem 'email_spec'
 end
 
+gem 'pg', :group => :production
+
