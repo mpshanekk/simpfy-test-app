@@ -21,7 +21,8 @@ gem 'pry-byebug'
 gem 'foreman'
 gem 'carrierwave'
 gem 'mini_magick'
- 
+gem 'heroku'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
@@ -40,7 +41,3 @@ group :test do
   gem 'email_spec'
 end
 
-group :production do
- gem 'pg'
- gem 'rails_12factor'
-end
