@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :track do
+    association(:album)
     name "My Track"
     length 2
-    album_id 1
   end
 end

@@ -1,8 +1,7 @@
-<%#= album %>
 <div class="panel panel-default">
- <div class="panel-heading"><strong>Albums</strong></div>
+ <div class="panel-heading"><strong>Tracks</strong></div>
 <div class="panel-body">
-<% @albums.each do |album| %>
+<% @tracks.each do |track| %>
 <ul class="list-group">
   <li class="list-group-item">
     <% if user_signed_in? %>
@@ -12,7 +11,7 @@
     </span>
 
     <% end %>
-    <%= link_to (album.title).split.map(&:capitalize).join(' '), "" %>
+    <%= link_to (track.name).split.map(&:capitalize).join(' '), artist_album_track_path(@artist,track.album_id,track.id) %>
   </li>
 </ul>
 <% end %>

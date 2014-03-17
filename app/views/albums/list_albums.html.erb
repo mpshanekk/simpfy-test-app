@@ -1,4 +1,3 @@
-<%#= album %>
 <div class="panel panel-default">
  <div class="panel-heading"><strong>Albums</strong></div>
 <div class="panel-body">
@@ -12,7 +11,7 @@
     </span>
 
     <% end %>
-    <%= link_to (album.title).split.map(&:capitalize).join(' '), "" %>
+    <%= link_to (album.title).split.map(&:capitalize).join(' '), artist_album_path(album.artist_id,album.id) %>
   </li>
 </ul>
 <% end %>

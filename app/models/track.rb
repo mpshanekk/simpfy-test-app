@@ -3,4 +3,8 @@ class Track < ActiveRecord::Base
 
   validates :name, :presence => true  
   validates :length, :numericality => true,  :allow_blank => true
+
+  def self.search(query)
+    where("name like ?", "%#{query}%") 
+  end
 end

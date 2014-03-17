@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :album do
+    association(:artist)
     title "My Title"
     genre "rock"
   end

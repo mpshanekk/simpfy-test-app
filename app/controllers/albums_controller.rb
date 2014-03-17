@@ -3,6 +3,19 @@ class AlbumsController < ApplicationController
 
   def index
     @artist = Artist.find(params[:artist_id])
+     if params[:search]
+      @albums = Album.search(params[:search]).order("created_at DESC")
+    else
+      @albums = @artist.albums
+    end
+  end
+
+  def list_albums
+     if params[:search]
+      @albums = Album.search(params[:search]).order("created_at DESC")
+     else
+      @albums = Album.all
+     end
   end
 
   def show
@@ -33,7 +46,7 @@ class AlbumsController < ApplicationController
   def update
     @artist = Artist.find(params[:artist_id])
     respond_to do |format|
-      if @artist.albums.update_attributes(album_params)
+      if @artist.albums.update(album_params)
         format.html { redirect_to artist_path(@artist), notice: 'Album was successfully updated.' }
         format.json { head :no_content }
       else

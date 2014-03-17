@@ -2,11 +2,11 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
   def index
-    @artists = Artist.all
     if params[:search]
-      @articles = Artist.search(params[:search]).order("created_at DESC")
+      @albums = Album.search(params[:search]).order("created_at DESC")
+      @artists = Artist.search(params[:search]).order("created_at DESC")
     else
-      @articles = Artist.order("created_at DESC")
+      @artists = Artist.all
     end
   end
 

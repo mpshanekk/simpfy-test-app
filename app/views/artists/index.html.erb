@@ -19,3 +19,24 @@
 <% if user_signed_in? %>
 <span class=" pull-right"><%= link_to 'Add Artist', new_artist_path, :class => "btn btn-default btn-sm" %></span>
 <% end %>
+
+<br>
+<% if !@albums.nil? %>
+<div class="panel panel-default">
+ <div class="panel-heading"><strong>Albums</strong></div>
+<div class="panel-body">
+<% @albums.each do |album| %>
+<ul class="list-group">
+  <li class="list-group-item">
+    <% if user_signed_in? %>
+    <span class="pull-right">
+      <%= link_to 'Remove Album', artist_album_path(album.artist_id,album.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs" %>
+    </span>
+
+    <% end %>
+    <%= link_to (album.title).split.map(&:capitalize).join(' '), artist_album_path(album.artist_id,album.id) %>
+  </li>
+</ul>
+<% end %>
+<br>
+<% end %>

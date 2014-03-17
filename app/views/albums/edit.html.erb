@@ -1,6 +1,15 @@
-<h1>Editing album</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', albums_path %>
+<div class="panel panel-default">
+<div class="panel-heading"><strong>Artist: <%= (@artist.name).split.map(&:capitalize).join(' ')%></strong></div>
+<div class="panel-body">
+<div class="authform">
+<div class="panel panel-default">
+ <div class="panel-heading"><strong>Update Album</strong></div>
+    <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
+</div>
+  </div>
+</div>
+</div>
+<%= link_to 'Cancel', :back %>

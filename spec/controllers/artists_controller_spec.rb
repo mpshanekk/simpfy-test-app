@@ -23,7 +23,7 @@ describe ArtistsController do
   # This should return the minimal set of attributes required to create a valid
   # Artist. As you add validations to Artist, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { { "name" => "MyString","gender" => Artist::GENDER.sample } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
