@@ -38,20 +38,21 @@ class AlbumsController < ApplicationController
         format.json { render action: 'show', status: :created, location: @album }
       else
         format.html { render action: 'new' }
-        format.json { render json: @artist.albums.errors, status: :unprocessable_entity }
+        format.json { render json: @album.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
     @artist = Artist.find(params[:artist_id])
+    @album =  @artist.albums.find(params[:id])
     respond_to do |format|
-      if @artist.albums.update(album_params)
-        format.html { redirect_to artist_path(@artist), notice: 'Album was successfully updated.' }
+      if @album.update(album_params)
+        format.html { redirect_to artist_album_path(@artist,@album), notice: 'Album was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @artist.albums.errors, status: :unprocessable_entity }
+        format.json { render json: @album.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,6 +71,6 @@ class AlbumsController < ApplicationController
     end
 
     def album_params
-      params.require(:album).permit(:title, :genre)
+      params.require(:album).permit(:title, :genre,:cover)
     end
 end

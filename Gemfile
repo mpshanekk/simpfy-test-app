@@ -20,6 +20,7 @@ gem 'pry-remote'
 gem 'pry-byebug'
 gem 'foreman'
 gem 'carrierwave'
+gem 'mini_magick'
 
 group :development do
   gem 'better_errors'

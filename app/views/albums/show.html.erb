@@ -6,7 +6,12 @@
 
 <p>
   <strong>Title:</strong>
-  <%= (@album.title).split.map(&:capitalize).join(' ') %>
+  <%= (@album.title).split.map(&:capitalize).join(' ') %> 
+  <% if !@album.cover.present? %>
+   <span class="image_container pull-right"><%= image_tag("/images/default.jpeg",:border => 0) %></span>
+  <% else %>
+   <span class="image_container pull-right"><%= image_tag(@album.cover)%></span>
+  <% end %>
 </p>
 
 <p>
@@ -18,7 +23,7 @@
 </p>
 <p>
 <% if user_signed_in? %>
- <span class=" pull-right"><%= link_to 'Add Track', new_artist_album_track_path(@artist,@album), :class => "btn btn-default btn-sm" %></span>
+ <span class=" pull-right"><%= link_to 'Add Track', new_artist_album_track_path(@artist,@album), :class => "btn btn-default btn-sm"%></span>
 <% end %>
 </p>
   </div>

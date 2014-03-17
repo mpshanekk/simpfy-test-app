@@ -5,7 +5,19 @@
 <div class="panel panel-default">
  <div class="panel-heading"><strong>Update Album</strong></div>
     <div class="panel-body">
-    <%= render 'form' %>
+  <%= simple_form_for([@artist,@album]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :genre %>
+    <%= f.file_field :cover %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'button right' %>
+  </div>
+<% end %>
   </div>
 </div>
 </div>
